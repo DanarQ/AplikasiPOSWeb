@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import {
   LayoutDashboard,
   Package,
@@ -12,7 +12,12 @@ import {
 import "./style/SidebarAdmin.css";
 
 const navItems = [
-  { to: "/", label: "Dashboard", icon: LayoutDashboard },
+  {
+    to: "/dashboard/analitik",
+    label: "dashboard",
+    icon: LayoutDashboard,
+    activePrefix: "/dashboard",
+  },
   { to: "/produk", label: "Produk", icon: Package },
   { to: "/kategori", label: "Kategori", icon: Tag },
   { to: "/transaksi", label: "Transaksi", icon: ShoppingCart },
@@ -20,6 +25,8 @@ const navItems = [
 ];
 
 function Sidebar() {
+  const { pathname } = useLocation();
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -34,14 +41,17 @@ function Sidebar() {
 
       <nav className="sidebar-content">
         <p className="sidebar-section-label">Menu</p>
-        {navItems.map(({ to, label, icon: Icon }) => (
+        {navItems.map(({ to, label, icon: Icon, activePrefix }) => (
           <NavLink
             key={to}
             to={to}
-            end={to === "/"}
-            className={({ isActive }) =>
-              `sidebar-nav-item${isActive ? " active" : ""}`
-            }
+            end
+            className={({ isActive }) => {
+              const active =
+                isActive ||
+                (activePrefix ? pathname.startsWith(activePrefix) : false);
+              return `sidebar-nav-item${active ? " active" : ""}`;
+            }}
           >
             <Icon size={18} className="sidebar-nav-icon" />
             <span>{label}</span>
