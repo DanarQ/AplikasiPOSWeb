@@ -1,3 +1,3 @@
 # Project Aplikasi POS Web
 
-Masih dalam tahap pengembangan
+> ⚠️ **Status Proyek:** Aplikasi ini saat ini masih dalam tahap eksplorasi dan **pengembangan aktif** (_under development_). Beberapa fitur mungkin belum tersedia secara lengkap dan masih dapat mengalami perubahan.
