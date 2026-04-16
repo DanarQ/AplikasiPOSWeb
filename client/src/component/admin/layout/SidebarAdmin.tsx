@@ -4,7 +4,6 @@ import {
   Package,
   Tag,
   ShoppingCart,
-  BarChart2,
   Settings,
   LogOut,
   Store,
@@ -21,7 +20,6 @@ const navItems = [
   { to: "/produk", label: "Produk", icon: Package },
   { to: "/kategori", label: "Kategori", icon: Tag },
   { to: "/transaksi", label: "Transaksi", icon: ShoppingCart },
-  { to: "/laporan", label: "Laporan", icon: BarChart2 },
 ];
 
 function Sidebar() {
@@ -36,6 +34,7 @@ function Sidebar() {
         <div className="sidebar-brand">
           <span className="sidebar-brand-name">Armanda</span>
           <span className="sidebar-brand-sub">Point of Sale</span>
+          <span className="sidebar-brand-role">Admin</span>
         </div>
       </div>
 

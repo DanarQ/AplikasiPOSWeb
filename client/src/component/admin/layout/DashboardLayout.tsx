@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import DashboardAdminNav from "./DashboardAdminNav";
+import DashboardAdminNav from "../pages/Dashboard/DashboardAdminNav";
 
 function DashboardLayout() {
   return (
@@ -7,7 +7,7 @@ function DashboardLayout() {
       {/* Navigasi ini tidak akan di-rerender saat berpindah Nested Routes di bawahnya */}
       <DashboardAdminNav />
       {/* Outlet akan merender komponen halaman seperti Transaksi, Analitik, dll */}
-      <div className="dashboard-content-area">
+      <div>
         <Outlet />
       </div>
     </>

@@ -52,6 +52,13 @@
   text-transform: uppercase;
 }
 
+.sidebar-brand-role {
+  font-size: 11px;
+  color: #737373;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 /* ===== Navigation ===== */
 .sidebar-content {
   flex: 1;

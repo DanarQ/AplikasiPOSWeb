@@ -1,34 +1,47 @@
 import { Routes, Route, Navigate } from "react-router";
-import Sidebar from "./component/admin/layout/SidebarAdmin";
-import DashboardLayout from "./component/admin/pages/Dashboard/DashboardLayout";
-import RingkasanAnalitik from "./component/admin/pages/Dashboard/RingkasanAnalitik";
-import Transaksi from "./component/admin/pages/Dashboard/Transaksi";
-import StokBarang from "./component/admin/pages/Dashboard/StokBarang";
-import Pelanggan from "./component/admin/pages/Dashboard/Pelanggan";
-import Keuangan from "./component/admin/pages/Dashboard/Keuangan";
-import Karyawan from "./component/admin/pages/Dashboard/Karyawan";
+import SidebarAdmin from "./component/admin/layout/SidebarAdmin";
+// Dashboard Admin
+import DashboardLayoutAdmin from "./component/admin/layout/DashboardLayout";
+import RingkasanAnalitikAdmin from "./component/admin/pages/Dashboard/RingkasanAnalitik";
+import TransaksiAdmin from "./component/admin/pages/Dashboard/Transaksi";
+import StokBarangAdmin from "./component/admin/pages/Dashboard/StokBarang";
+import PelangganAdmin from "./component/admin/pages/Dashboard/Pelanggan";
+import KeuanganAdmin from "./component/admin/pages/Dashboard/Keuangan";
+import KaryawanAdmin from "./component/admin/pages/Dashboard/Karyawan";
+// Produk Admin
+import ProdukLayoutAdmin from "./component/admin/layout/ProdukLayout";
+// Kategori Admin
+import KategoriLayoutAdmin from "./component/admin/layout/KategoriLayout";
+// Transaksi Admin
+import TransaksiLayoutAdmin from "./component/admin/layout/TransaksiLayout";
+// Settings Admin
+import SettingsLayoutAdmin from "./component/admin/layout/SettingsLayout";
 import "./App.css";
 
 function App() {
   return (
     <>
-      {/* Halaman Admin (yang user belum, nanti setelah di implementasikan database nya) */}
-      <Sidebar />
+      {/* Halaman Admin */}
+      <SidebarAdmin />
       <main className="main-content">
         <Routes>
           <Route
             path="/"
             element={<Navigate to="/dashboard/analitik" replace />}
           />
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<DashboardLayoutAdmin />}>
             <Route index element={<Navigate to="analitik" replace />} />
-            <Route path="analitik" element={<RingkasanAnalitik />} />
-            <Route path="transaksi" element={<Transaksi />} />
-            <Route path="stok-barang" element={<StokBarang />} />
-            <Route path="pelanggan" element={<Pelanggan />} />
-            <Route path="keuangan" element={<Keuangan />} />
-            <Route path="karyawan" element={<Karyawan />} />
+            <Route path="analitik" element={<RingkasanAnalitikAdmin />} />
+            <Route path="transaksi" element={<TransaksiAdmin />} />
+            <Route path="stok-barang" element={<StokBarangAdmin />} />
+            <Route path="pelanggan" element={<PelangganAdmin />} />
+            <Route path="keuangan" element={<KeuanganAdmin />} />
+            <Route path="karyawan" element={<KaryawanAdmin />} />
           </Route>
+          <Route path="/produk" element={<ProdukLayoutAdmin />}></Route>
+          <Route path="/kategori" element={<KategoriLayoutAdmin />}></Route>
+          <Route path="/transaksi" element={<TransaksiLayoutAdmin />}></Route>
+          <Route path="/settings" element={<SettingsLayoutAdmin />}></Route>
         </Routes>
       </main>
     </>
