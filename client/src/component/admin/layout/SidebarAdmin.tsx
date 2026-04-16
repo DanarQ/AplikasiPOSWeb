@@ -9,7 +9,7 @@ import {
   LogOut,
   Store,
 } from "lucide-react";
-import "./style/Sidebar.css";
+import "./style/SidebarAdmin.css";
 
 const navItems = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router";
-import Sidebar from "./component/admin/layout/Sidebar";
-import Dashboard from "./component/admin/pages/Dashboard";
+import Sidebar from "./component/admin/layout/SidebarAdmin";
+import Dashboard from "./component/admin/pages/DashboardAdmin";
 import "./App.css";
 
 function App() {
