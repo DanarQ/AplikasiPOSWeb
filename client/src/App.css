@@ -11,8 +11,9 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  background-color: #ffffff;
+  background-color: #fafafa;
   color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
@@ -22,6 +23,7 @@ body {
 
 .main-content {
   flex: 1;
-  padding: 10px;
+  padding: 40px;
   overflow-y: auto;
+  min-height: 100vh;
 }

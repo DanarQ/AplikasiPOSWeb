@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import "./style/DashboardAdmin.css";
+import "./style/DashboardAdminNav.css";
 
 const dashboardNavItems = [
   { to: "/dashboard/analitik", label: "Ringkasan Analitik" },

@@ -1,6 +1,6 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 import Sidebar from "./component/admin/layout/SidebarAdmin";
-import Dashboard from "./component/admin/pages/Dashboard/DashboardAdminNav";
+import DashboardLayout from "./component/admin/pages/Dashboard/DashboardLayout";
 import RingkasanAnalitik from "./component/admin/pages/Dashboard/RingkasanAnalitik";
 import Transaksi from "./component/admin/pages/Dashboard/Transaksi";
 import StokBarang from "./component/admin/pages/Dashboard/StokBarang";
@@ -16,12 +16,19 @@ function App() {
       <Sidebar />
       <main className="main-content">
         <Routes>
-          <Route path="/dashboard/analitik" element={<RingkasanAnalitik />} />
-          <Route path="/dashboard/transaksi" element={<Transaksi />} />
-          <Route path="/dashboard/stok-barang" element={<StokBarang />} />
-          <Route path="/dashboard/pelanggan" element={<Pelanggan />} />
-          <Route path="/dashboard/keuangan" element={<Keuangan />} />
-          <Route path="/dashboard/karyawan" element={<Karyawan />} />
+          <Route
+            path="/"
+            element={<Navigate to="/dashboard/analitik" replace />}
+          />
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<Navigate to="analitik" replace />} />
+            <Route path="analitik" element={<RingkasanAnalitik />} />
+            <Route path="transaksi" element={<Transaksi />} />
+            <Route path="stok-barang" element={<StokBarang />} />
+            <Route path="pelanggan" element={<Pelanggan />} />
+            <Route path="keuangan" element={<Keuangan />} />
+            <Route path="karyawan" element={<Karyawan />} />
+          </Route>
         </Routes>
       </main>
     </>
