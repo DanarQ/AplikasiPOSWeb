@@ -1,0 +1,132 @@
+/* ===== Sidebar ===== */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  min-height: 100vh;
+  background-color: #050505;
+  color: #a3a3a3;
+  padding: 0;
+  flex-shrink: 0;
+  border-right: 1px solid #1a1a1a;
+}
+
+/* ===== Header ===== */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-brand-sub {
+  font-size: 11px;
+  color: #737373;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ===== Navigation ===== */
+.sidebar-content {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #525252;
+  padding: 0 8px;
+  margin: 8px 0 4px 0;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a3a3a3;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-nav-item:hover {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.sidebar-nav-item.active {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.sidebar-nav-item.active .sidebar-nav-icon {
+  color: #000000;
+}
+
+.sidebar-nav-icon {
+  flex-shrink: 0;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-nav-item:hover .sidebar-nav-icon {
+  transform: scale(1.05);
+}
+
+/* ===== Footer ===== */
+.sidebar-footer {
+  padding: 12px;
+  border-top: 1px solid #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-logout {
+  color: #a3a3a3;
+}
+
+.sidebar-logout:hover {
+  background-color: #121212;
+  color: #ffffff;
+}
