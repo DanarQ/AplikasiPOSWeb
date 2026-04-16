@@ -1,60 +1,108 @@
-/* ===== Premium Segmented Navigation ===== */
+/* ===== Dashboard Navigation ===== */
 .dashboard-nav-wrapper {
+  width: 100%;
   margin-bottom: 32px;
-  display: flex;
-  align-items: center;
-  animation: fadeInDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .dashboard-nav {
-  display: inline-flex;
-  gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
+  display: flex;
+  width: 100%;
+  gap: 4px;
   background-color: #ebebeb;
-  padding: 6px;
+  padding: 5px;
   border-radius: 12px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
-  -webkit-overflow-scrolling: touch;
-}
-
-.dashboard-nav::-webkit-scrollbar {
-  display: none;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .dashboard-nav-item {
-  position: relative;
-  padding: 10px 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
   font-size: 14px;
   font-weight: 500;
   color: #525252;
   text-decoration: none;
   white-space: nowrap;
   border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
 }
 
 .dashboard-nav-item:hover {
   color: #171717;
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .dashboard-nav-item:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
 
 .dashboard-nav-item.active {
   color: #000000;
   background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    0 0 1px rgba(0, 0, 0, 0.08);
   font-weight: 600;
+}
+
+/* ===== Responsive: Tablet ===== */
+@media (max-width: 768px) {
+  .dashboard-nav-wrapper {
+    margin-bottom: 24px;
+  }
+
+  .dashboard-nav {
+    gap: 3px;
+    padding: 4px;
+    border-radius: 10px;
+  }
+
+  .dashboard-nav-item {
+    padding: 9px 6px;
+    font-size: 13px;
+    border-radius: 7px;
+  }
+}
+
+/* ===== Responsive: Mobile ===== */
+@media (max-width: 540px) {
+  .dashboard-nav-wrapper {
+    margin-bottom: 20px;
+    /* fade kanan sebagai indikator scroll */
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
+
+  .dashboard-nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* items tidak flex-stretch agar tetap natural di scroll horizontal */
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .dashboard-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dashboard-nav-item {
+    flex: 0 0 auto;
+    min-width: 110px;
+    padding: 9px 14px;
+    font-size: 13px;
+  }
 }
 
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
   to {
     opacity: 1;
