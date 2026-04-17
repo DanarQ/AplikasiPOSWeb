@@ -10,7 +10,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import "./style/RingkasanAnalitik.css";
-// ====================== DATA LAYER ======================
+// ====================== MOCK DATA ======================
 const kpiData = [
   {
     id: 1,
