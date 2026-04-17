@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   DollarSign,
   ShoppingBag,
@@ -10,7 +10,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import "./style/RingkasanAnalitik.css";
-// ====================== MOCK DATA ======================
+// MOCK DATA
 const kpiData = [
   {
     id: 1,
@@ -102,7 +102,110 @@ const recentTransactions = [
   },
 ];
 
-// ====================== COMPONENTS ======================
+// SKELETON COMPONENTS
+
+const SkeletonBlock = ({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) => <div className={`skeleton-block ${className ?? ""}`} style={style} />;
+
+const KPIGridSkeleton = () => (
+  <div className="kpi-grid">
+    {[1, 2, 3, 4].map((i) => (
+      <div key={i} className="kpi-card">
+        <SkeletonBlock className="skeleton-icon" />
+        <div className="kpi-content">
+          <SkeletonBlock className="skeleton-text short" />
+          <SkeletonBlock className="skeleton-text long" />
+          <SkeletonBlock className="skeleton-text medium" />
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+const ChartSkeleton = () => (
+  <div className="chart-section">
+    <div className="section-header">
+      <SkeletonBlock className="skeleton-text medium" />
+    </div>
+    <div className="chart-container">
+      <div className="chart-bars">
+        {[40, 70, 50, 85, 60, 90, 65, 80, 55, 95, 60, 75].map((h, i) => (
+          <div key={i} className="bar-group">
+            <div className="bar-wrapper">
+              <SkeletonBlock
+                className="bar-fill skeleton-bar"
+                style={{ height: `${h}%` }}
+              />
+            </div>
+            <SkeletonBlock className="skeleton-text bar-label-skeleton" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+const TopProductsSkeleton = () => (
+  <div className="top-products-section">
+    <div className="section-header">
+      <SkeletonBlock className="skeleton-text medium" />
+    </div>
+    <div className="products-list">
+      {[1, 2].map((i) => (
+        <div key={i} className="product-item">
+          <div className="product-info">
+            <SkeletonBlock className="skeleton-text medium" />
+            <SkeletonBlock className="skeleton-text short" />
+          </div>
+          <div className="product-stats">
+            <SkeletonBlock className="skeleton-text short" />
+            <SkeletonBlock className="skeleton-progress" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const TransactionsTableSkeleton = () => (
+  <div className="recent-transactions-section">
+    <div className="section-header">
+      <SkeletonBlock className="skeleton-text medium" />
+      <SkeletonBlock className="skeleton-text short" />
+    </div>
+    <div className="table-responsive">
+      <table className="transactions-table">
+        <thead>
+          <tr>
+            {[1, 2, 3, 4, 5].map((i) => (
+              <th key={i}>
+                <SkeletonBlock className="skeleton-text short" />
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {[1, 2, 3].map((i) => (
+            <tr key={i}>
+              {[1, 2, 3, 4, 5].map((j) => (
+                <td key={j}>
+                  <SkeletonBlock className="skeleton-text medium" />
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+);
+
+//COMPONENTS
 
 const KPIItem = React.memo(({ item }: { item: (typeof kpiData)[0] }) => {
   const Icon = item.icon;
@@ -233,6 +336,13 @@ const TransactionsTable = React.memo(() => (
 // ====================== MAIN CONTAINER ======================
 
 const RingkasanAnalitik = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="analytics-container">
       <header className="analytics-header">
@@ -241,21 +351,32 @@ const RingkasanAnalitik = () => {
           <p>Pantau performa bisnis Anda</p>
         </div>
         <div className="header-actions">
-          <button className="date-filter-btn">
+          <button className="date-filter-btn" disabled={isLoading}>
             <Calendar size={16} />
             Filter Tanggal
           </button>
         </div>
       </header>
 
-      <KPIGrid />
-
-      <div className="dashboard-main-grid">
-        <ChartSection />
-        <TopProducts />
-      </div>
-
-      <TransactionsTable />
+      {isLoading ? (
+        <>
+          <KPIGridSkeleton />
+          <div className="dashboard-main-grid">
+            <ChartSkeleton />
+            <TopProductsSkeleton />
+          </div>
+          <TransactionsTableSkeleton />
+        </>
+      ) : (
+        <>
+          <KPIGrid />
+          <div className="dashboard-main-grid">
+            <ChartSection />
+            <TopProducts />
+          </div>
+          <TransactionsTable />
+        </>
+      )}
     </div>
   );
 };
