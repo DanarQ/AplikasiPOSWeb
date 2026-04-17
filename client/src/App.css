@@ -18,12 +18,14 @@ body {
 
 #root {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .main-content {
   flex: 1;
   padding: 40px;
   overflow-y: auto;
-  min-height: 100vh;
+  height: 100vh;
+  width: calc(100% - 240px);
 }
